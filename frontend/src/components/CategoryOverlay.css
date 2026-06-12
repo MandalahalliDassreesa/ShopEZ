@@ -11,9 +11,8 @@
   justify-content: center;
   overflow: hidden;
   background-color: transparent;
+  perspective: 1000px; /* For 3D zoom effect */
 }
-
-/* removed .active */
 
 /* Base overlay background */
 .overlay-bg {
@@ -22,145 +21,103 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--bg-primary);
-  transform: scaleY(0);
-  transform-origin: bottom;
-  animation: sweepUp 2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  background: rgba(10, 10, 15, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  animation: fadeInBg 0.3s ease forwards;
 }
 
-@keyframes sweepUp {
-  0% { transform: scaleY(0); transform-origin: bottom; }
-  45% { transform: scaleY(1); transform-origin: bottom; }
-  55% { transform: scaleY(1); transform-origin: top; }
-  100% { transform: scaleY(0); transform-origin: top; }
+@keyframes fadeInBg {
+  to { opacity: 1; }
+}
+
+/* Zoom phase class applied right before navigation */
+.category-overlay.zoom-phase {
+  animation: warpInside 0.6s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+}
+
+@keyframes warpInside {
+  0% { transform: scale(1) translateZ(0); opacity: 1; }
+  100% { transform: scale(5) translateZ(500px); opacity: 0; }
 }
 
 /* Category Text */
 .overlay-content {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   font-family: var(--font-heading);
-  font-size: 4rem;
+  font-size: 6rem;
   font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: 4px;
+  color: var(--primary);
+  text-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+  letter-spacing: 6px;
   text-transform: uppercase;
   opacity: 0;
-  animation: fadeInOut 2s ease forwards;
+  transform: scale(3);
+  animation: textSlam 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s forwards;
 }
 
-@keyframes fadeInOut {
-  0%, 20% { opacity: 0; transform: translateY(20px); }
-  40%, 60% { opacity: 1; transform: translateY(0); }
-  80%, 100% { opacity: 0; transform: translateY(-20px); }
+@keyframes textSlam {
+  0% { opacity: 0; transform: scale(3); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
-/* 
-  Specific Animations for Categories
-*/
-
-/* Electronics: Lightning flashes */
-.anim-electronics::before, .anim-electronics::after {
-  content: '';
+/* Falling Products */
+.falling-products-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: white;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.falling-product-img {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--border-glass);
+  
+  /* Initial state: above screen */
+  top: -300px;
   opacity: 0;
-  z-index: 3;
-}
-.anim-electronics::before {
-  animation: lightning 2s ease forwards;
-}
-.anim-electronics::after {
-  animation: lightning 2s ease 0.3s forwards;
+  
+  /* Animation */
+  animation: dropDown 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-@keyframes lightning {
-  0% { opacity: 0; }
-  30% { opacity: 0; }
-  32% { opacity: 0.8; }
-  34% { opacity: 0; }
-  36% { opacity: 0.5; }
-  38% { opacity: 0; }
-  100% { opacity: 0; }
+@keyframes dropDown {
+  0% {
+    top: -300px;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    /* Random drop locations generally around the middle */
+    top: calc(20vh + (random() * 40vh)); /* CSS doesn't have random(), but we stagger the left positions in JS, so we just drop it to a fixed relative bottom */
+    top: 30vh; /* Fallback fixed drop zone */
+    opacity: 0.8;
+  }
 }
 
-/* Fashion: Sparkles / Camera flash */
-.anim-fashion::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 100vw;
-  transform: translate(-50%, -50%) scale(0);
-  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
-  z-index: 1;
-  animation: flashBulb 2s ease forwards;
-}
+/* Since CSS lacks random, let's use nth-child to scatter them vertically as well */
+.falling-product-img:nth-child(1) { top: -300px; animation-name: drop1; }
+.falling-product-img:nth-child(2) { top: -300px; animation-name: drop2; }
+.falling-product-img:nth-child(3) { top: -300px; animation-name: drop3; }
+.falling-product-img:nth-child(4) { top: -300px; animation-name: drop4; }
+.falling-product-img:nth-child(5) { top: -300px; animation-name: drop5; }
+.falling-product-img:nth-child(6) { top: -300px; animation-name: drop6; }
 
-@keyframes flashBulb {
-  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-  40% { transform: translate(-50%, -50%) scale(2); opacity: 1; }
-  60% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
-  100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
-}
-
-/* Watches: Ticking sweep */
-.anim-watches::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200vw;
-  height: 2px;
-  background: var(--accent);
-  transform-origin: center left;
-  transform: translateY(-50%) rotate(-90deg);
-  z-index: 1;
-  animation: watchTick 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes watchTick {
-  0% { transform: translateY(-50%) rotate(-90deg); }
-  25% { transform: translateY(-50%) rotate(0deg); }
-  50% { transform: translateY(-50%) rotate(90deg); }
-  75% { transform: translateY(-50%) rotate(180deg); }
-  100% { transform: translateY(-50%) rotate(270deg); }
-}
-
-/* Footwear: Fast Dash Lines */
-.anim-footwear {
-  background: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.1) 40px, rgba(255,255,255,0.1) 80px);
-  background-size: 200% 100%;
-  animation: speedLines 2s linear forwards;
-}
-
-@keyframes speedLines {
-  0% { background-position: 100% 0; opacity: 0; }
-  30% { opacity: 1; }
-  70% { opacity: 1; }
-  100% { background-position: -100% 0; opacity: 0; }
-}
-
-/* Generic luxury shine for all others */
-.anim-generic::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transform: skewX(-25deg);
-  z-index: 3;
-  animation: luxuryShine 2s ease forwards;
-}
-
-@keyframes luxuryShine {
-  0% { left: -100%; }
-  100% { left: 200%; }
-}
+@keyframes drop1 { 0% { top: -300px; opacity: 0; } 20% { opacity: 1; } 100% { top: 15vh; opacity: 0.7; } }
+@keyframes drop2 { 0% { top: -300px; opacity: 0; } 20% { opacity: 1; } 100% { top: 45vh; opacity: 0.5; } }
+@keyframes drop3 { 0% { top: -300px; opacity: 0; } 20% { opacity: 1; } 100% { top: 25vh; opacity: 0.8; } }
+@keyframes drop4 { 0% { top: -300px; opacity: 0; } 20% { opacity: 1; } 100% { top: 60vh; opacity: 0.6; } }
+@keyframes drop5 { 0% { top: -300px; opacity: 0; } 20% { opacity: 1; } 100% { top: 10vh; opacity: 0.4; } }
+@keyframes drop6 { 0% { top: -300px; opacity: 0; } 20% { opacity: 1; } 100% { top: 50vh; opacity: 0.9; } }
