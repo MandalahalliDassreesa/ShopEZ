@@ -6,18 +6,19 @@
   --font-body: 'Plus Jakarta Sans', sans-serif;
 
   /* Color System Light Mode */
-  --primary: hsl(256, 82%, 56%);
-  --primary-hover: hsl(256, 82%, 48%);
-  --primary-light: hsl(256, 82%, 96%);
-  --secondary: hsl(280, 75%, 60%);
-  --accent: hsl(38, 92%, 50%); /* Gold/Star rating */
+  --primary: hsl(330, 82%, 56%); /* Pink */
+  --primary-hover: hsl(330, 82%, 48%);
+  --primary-light: hsl(330, 82%, 96%);
+  --secondary: hsl(190, 85%, 50%); /* Cyan */
+  --accent: hsl(45, 100%, 50%); /* Gold */
   
-  --bg-primary: hsl(220, 20%, 97%);
+  --bg-primary: hsl(0, 0%, 98%);
   --bg-secondary: hsl(0, 0%, 100%);
-  --bg-glass: rgba(255, 255, 255, 0.7);
-  --border-glass: rgba(255, 255, 255, 0.4);
+  --bg-gradient: linear-gradient(135deg, hsl(330, 100%, 96%), hsl(190, 100%, 96%), hsl(250, 100%, 96%));
+  --bg-glass: rgba(255, 255, 255, 0.85);
+  --border-glass: rgba(255, 255, 255, 0.6);
   
-  --text-primary: hsl(224, 71%, 4%);
+  --text-primary: hsl(224, 71%, 10%);
   --text-secondary: hsl(220, 9%, 40%);
   --text-light: hsl(220, 10%, 65%);
   
@@ -38,15 +39,16 @@
 
 [data-theme='dark'] {
   /* Color System Dark Mode */
-  --primary: hsl(256, 82%, 62%);
-  --primary-hover: hsl(256, 82%, 70%);
-  --primary-light: hsl(256, 30%, 15%);
-  --secondary: hsl(280, 75%, 65%);
+  --primary: hsl(330, 82%, 62%);
+  --primary-hover: hsl(330, 82%, 70%);
+  --primary-light: hsl(330, 30%, 15%);
+  --secondary: hsl(190, 85%, 55%);
   
-  --bg-primary: hsl(224, 71%, 4%);
-  --bg-secondary: hsl(222, 47%, 9%);
-  --bg-glass: rgba(13, 17, 30, 0.7);
-  --border-glass: rgba(255, 255, 255, 0.05);
+  --bg-primary: hsl(230, 30%, 10%);
+  --bg-secondary: hsl(230, 30%, 14%);
+  --bg-gradient: linear-gradient(135deg, hsl(330, 60%, 10%), hsl(190, 60%, 10%), hsl(250, 60%, 10%));
+  --bg-glass: rgba(20, 24, 38, 0.85);
+  --border-glass: rgba(255, 255, 255, 0.08);
   
   --text-primary: hsl(210, 40%, 98%);
   --text-secondary: hsl(215, 20%, 75%);
@@ -84,7 +86,8 @@
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-primary);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -114,8 +117,6 @@ a {
 
 .glass-card {
   background: var(--bg-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
