@@ -189,7 +189,7 @@ main {
   position: absolute;
   top: 100%;
   left: 0;
-  width: 650px;
+  width: 750px;
   margin-top: 10px;
   border-radius: var(--radius-md);
   padding: 24px;
@@ -201,6 +201,38 @@ main {
   opacity: 0;
   transform: translateY(10px);
   transition: all var(--transition-normal);
+  
+  /* Fix Background Transparency */
+  background: var(--bg-secondary) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: var(--shadow-lg);
+}
+
+.menu-icon-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-normal);
+}
+
+.menu-icon-link:hover {
+  background: var(--bg-primary);
+  transform: translateX(5px);
+}
+
+.menu-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid var(--border-color);
 }
 
 .mega-menu-trigger:hover .mega-menu-content {

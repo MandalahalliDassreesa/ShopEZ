@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingCart, Heart, Sun, Moon, Search, User, LogOut, ChevronDown, Clock, Sparkles } from 'lucide-react';
+import { ShoppingCart, Heart, Sun, Moon, Search, User, LogOut, ChevronDown, Clock, Sparkles, Smartphone, Tv, Watch, Shirt, Footprints, ShoppingBag, Sparkles as SparklesIcon, BookOpen, Dumbbell, Apple } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
@@ -131,26 +131,46 @@ const Navbar = () => {
             <div className="mega-menu-column">
               <h4>Electronics & Home</h4>
               <ul>
-                <li><Link to="/?category=Electronics" onClick={(e) => { e.preventDefault(); triggerTransition('Electronics', '/?category=Electronics'); }}>Electronics</Link></li>
-                <li><Link to="/?category=Home Appliances" onClick={(e) => { e.preventDefault(); triggerTransition('Home Appliances', '/?category=Home Appliances'); }}>Home Appliances</Link></li>
-                <li><Link to="/?category=Watches" onClick={(e) => { e.preventDefault(); triggerTransition('Watches', '/?category=Watches'); }}>Watches</Link></li>
+                <li><Link to="/?category=Electronics" className="menu-icon-link" onClick={(e) => { e.preventDefault(); triggerTransition('Electronics', '/?category=Electronics'); }}>
+                  <div className="menu-icon-wrapper"><Smartphone size={18} /></div><span>Electronics</span>
+                </Link></li>
+                <li><Link to="/?category=Home Appliances" className="menu-icon-link" onClick={(e) => { e.preventDefault(); triggerTransition('Home Appliances', '/?category=Home Appliances'); }}>
+                  <div className="menu-icon-wrapper"><Tv size={18} /></div><span>Home Appliances</span>
+                </Link></li>
+                <li><Link to="/?category=Watches" className="menu-icon-link" onClick={(e) => { e.preventDefault(); triggerTransition('Watches', '/?category=Watches'); }}>
+                  <div className="menu-icon-wrapper"><Watch size={18} /></div><span>Watches</span>
+                </Link></li>
               </ul>
             </div>
             <div className="mega-menu-column">
               <h4>Lifestyle & Apparel</h4>
               <ul>
-                <li><Link to="/?category=Fashion" onClick={(e) => { e.preventDefault(); triggerTransition('Fashion', '/?category=Fashion'); }}>Fashion Wear</Link></li>
-                <li><Link to="/?category=Footwear" onClick={(e) => { e.preventDefault(); triggerTransition('Footwear', '/?category=Footwear'); }}>Footwear</Link></li>
-                <li><Link to="/?category=Accessories" onClick={(e) => { e.preventDefault(); triggerTransition('Accessories', '/?category=Accessories'); }}>Accessories</Link></li>
-                <li><Link to="/?category=Beauty" onClick={(e) => { e.preventDefault(); triggerTransition('Beauty', '/?category=Beauty'); }}>Beauty & Cosmetics</Link></li>
+                <li><Link to="/?category=Fashion" className="menu-icon-link" onClick={(e) => { e.preventDefault(); triggerTransition('Fashion', '/?category=Fashion'); }}>
+                  <div className="menu-icon-wrapper"><Shirt size={18} /></div><span>Fashion Wear</span>
+                </Link></li>
+                <li><Link to="/?category=Footwear" className="menu-icon-link" onClick={(e) => { e.preventDefault(); triggerTransition('Footwear', '/?category=Footwear'); }}>
+                  <div className="menu-icon-wrapper"><Footprints size={18} /></div><span>Footwear</span>
+                </Link></li>
+                <li><Link to="/?category=Accessories" className="menu-icon-link" onClick={(e) => { e.preventDefault(); triggerTransition('Accessories', '/?category=Accessories'); }}>
+                  <div className="menu-icon-wrapper"><ShoppingBag size={18} /></div><span>Accessories</span>
+                </Link></li>
+                <li><Link to="/?category=Beauty" className="menu-icon-link" onClick={(e) => { e.preventDefault(); triggerTransition('Beauty', '/?category=Beauty'); }}>
+                  <div className="menu-icon-wrapper"><SparklesIcon size={18} /></div><span>Beauty & Cosmetics</span>
+                </Link></li>
               </ul>
             </div>
             <div className="mega-menu-column">
               <h4>Leisure & Kitchen</h4>
               <ul>
-                <li><Link to="/?category=Books" onClick={(e) => { e.preventDefault(); triggerTransition('Books', '/?category=Books'); }}>Books</Link></li>
-                <li><Link to="/?category=Sports" onClick={(e) => { e.preventDefault(); triggerTransition('Sports', '/?category=Sports'); }}>Sports & Fitness</Link></li>
-                <li><Link to="/?category=Grocery" onClick={(e) => { e.preventDefault(); triggerTransition('Grocery', '/?category=Grocery'); }}>Grocery</Link></li>
+                <li><Link to="/?category=Books" className="menu-icon-link" onClick={(e) => { e.preventDefault(); triggerTransition('Books', '/?category=Books'); }}>
+                  <div className="menu-icon-wrapper"><BookOpen size={18} /></div><span>Books</span>
+                </Link></li>
+                <li><Link to="/?category=Sports" className="menu-icon-link" onClick={(e) => { e.preventDefault(); triggerTransition('Sports', '/?category=Sports'); }}>
+                  <div className="menu-icon-wrapper"><Dumbbell size={18} /></div><span>Sports & Fitness</span>
+                </Link></li>
+                <li><Link to="/?category=Grocery" className="menu-icon-link" onClick={(e) => { e.preventDefault(); triggerTransition('Grocery', '/?category=Grocery'); }}>
+                  <div className="menu-icon-wrapper"><Apple size={18} /></div><span>Grocery</span>
+                </Link></li>
               </ul>
             </div>
           </div>
