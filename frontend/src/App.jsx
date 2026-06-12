@@ -28,15 +28,14 @@ import { Login, Register } from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 
 const GlobalLocationModal = () => {
-  const { user } = useAuth();
   const [showModal, React_useState] = React.useState(false);
 
   React.useEffect(() => {
-    // Show modal if user logs in and hasn't picked a location yet
-    if (user && !localStorage.getItem('userLocation')) {
+    // Show modal if user hasn't picked a location yet
+    if (!localStorage.getItem('userLocation')) {
       showModalState(true);
     }
-  }, [user]);
+  }, []);
 
   const showModalState = (val) => React_useState(val);
 
