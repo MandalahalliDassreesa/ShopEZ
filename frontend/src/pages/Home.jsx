@@ -615,16 +615,46 @@ const Home = () => {
                   >
                     Prev
                   </button>
-                  {Array.from({ length: pages }).map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setPage(i + 1)}
-                      className={`btn ${page === i + 1 ? 'btn-primary' : 'btn-secondary'}`}
-                      style={{ width: '36px', height: '36px', padding: 0 }}
-                    >
-                      {i + 1}
-                    </button>
-                  ))}
+                  {(() => {
+                    const pageNumbers = [];
+                    const maxVisible = 5;
+                    let startPage = Math.max(1, page - Math.floor(maxVisible / 2));
+                    let endPage = Math.min(pages, startPage + maxVisible - 1);
+
+                    if (endPage - startPage + 1 < maxVisible) {
+                      startPage = Math.max(1, endPage - maxVisible + 1);
+                    }
+
+                    for (let i = startPage; i <= endPage; i++) {
+                      pageNumbers.push(
+                        <button
+                          key={i}
+                          onClick={() => setPage(i)}
+                          className={`btn ${page === i ? 'btn-primary' : 'btn-secondary'}`}
+                          style={{ width: '36px', height: '36px', padding: 0 }}
+                        >
+                          {i}
+                        </button>
+                      );
+                    }
+                    return (
+                      <>
+                        {startPage > 1 && (
+                          <>
+                            <button onClick={() => setPage(1)} className="btn btn-secondary" style={{ width: '36px', height: '36px', padding: 0 }}>1</button>
+                            {startPage > 2 && <span style={{ padding: '8px 4px', color: 'var(--text-secondary)' }}>...</span>}
+                          </>
+                        )}
+                        {pageNumbers}
+                        {endPage < pages && (
+                          <>
+                            {endPage < pages - 1 && <span style={{ padding: '8px 4px', color: 'var(--text-secondary)' }}>...</span>}
+                            <button onClick={() => setPage(pages)} className="btn btn-secondary" style={{ width: '36px', height: '36px', padding: 0 }}>{pages}</button>
+                          </>
+                        )}
+                      </>
+                    );
+                  })()}
                   <button
                     disabled={page === pages}
                     onClick={() => setPage(page + 1)}

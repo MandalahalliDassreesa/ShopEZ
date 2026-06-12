@@ -64,13 +64,14 @@ const ProductCard = ({ product, compareList = [], onToggleCompare }) => {
       transition={{ duration: 0.4, ease: "easeOut" }}
       style={{ overflow: 'hidden' }}
     >
-      <Link to={`/product/${product._id}`} style={{ display: 'block' }}>
+      <Link to={`/product/${product._id}`} style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
         <div className="product-card-img-box">
           <img
-            src={product.images[0]}
+            src={product.images[0] || 'https://via.placeholder.com/400?text=No+Image'}
             alt={product.name}
             className="product-card-img"
             loading="lazy"
+            onError={(e) => { e.target.onerror = null; e.target.src = 'https://via.placeholder.com/400x400?text=No+Image'; }}
           />
           {product.discountPercentage > 0 && (
             <span className="product-card-badge badge-tag flash">
