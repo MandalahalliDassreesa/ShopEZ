@@ -1,10 +1,17 @@
-const express = require('express');
-const { createReview, getReviewsByProduct } = require('../controllers/reviewController');
-const { protect } = require('../middleware/authMiddleware');
+import express from 'express';
+import {
+  createProductReview,
+  getProductReviews,
+  helpfulReviewVote
+} from '../controllers/reviewController.js';
+import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.post('/:productId', protect, createReview);
-router.get('/:productId', getReviewsByProduct);
+router.route('/:productId')
+  .post(protect, createProductReview)
+  .get(getProductReviews);
 
-module.exports = router;
+router.post('/:reviewId/helpful', protect, helpfulReviewVote);
+
+export default router;

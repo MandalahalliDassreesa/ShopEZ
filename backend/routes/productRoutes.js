@@ -1,21 +1,18 @@
-const express = require('express');
-const multer = require('multer');
-const {
+import express from 'express';
+import {
   getProducts,
   getProductById,
-  createProduct,
-  updateProduct,
-  deleteProduct,
-} = require('../controllers/productController');
-const { protect, admin } = require('../middleware/authMiddleware');
+  getProductRecommendations,
+  getProductCategories,
+  getProductBrands
+} from '../controllers/productController.js';
 
 const router = express.Router();
-const upload = multer({ dest: 'uploads/' });
 
 router.get('/', getProducts);
+router.get('/meta/categories', getProductCategories);
+router.get('/meta/brands', getProductBrands);
 router.get('/:id', getProductById);
-router.post('/', protect, admin, upload.array('images', 5), createProduct);
-router.put('/:id', protect, admin, upload.array('images', 5), updateProduct);
-router.delete('/:id', protect, admin, deleteProduct);
+router.get('/:id/recommendations', getProductRecommendations);
 
-module.exports = router;
+export default router;
