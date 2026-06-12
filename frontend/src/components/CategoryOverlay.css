@@ -1,60 +1,36 @@
 .category-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 99999;
-  pointer-events: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: transparent;
-  perspective: 1000px; /* For 3D zoom effect */
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 99999; pointer-events: auto;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; background-color: transparent;
+  perspective: 1500px;
 }
 
-/* Base overlay background */
 .overlay-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(10, 10, 15, 0.9);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  opacity: 0;
-  animation: fadeInBg 0.3s ease forwards;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  opacity: 0; animation: fadeInBg 0.3s ease forwards;
 }
 
-@keyframes fadeInBg {
-  to { opacity: 1; }
-}
+@keyframes fadeInBg { to { opacity: 1; } }
 
-/* Zoom phase class applied right before navigation */
 .category-overlay.zoom-phase {
   animation: warpInside 0.6s cubic-bezier(0.8, 0, 0.2, 1) forwards;
 }
 
 @keyframes warpInside {
   0% { transform: scale(1) translateZ(0); opacity: 1; }
-  100% { transform: scale(5) translateZ(500px); opacity: 0; }
+  100% { transform: scale(5) translateZ(800px); opacity: 0; }
 }
 
-/* Category Text */
 .overlay-content {
-  position: relative;
-  z-index: 10;
-  font-family: var(--font-heading);
-  font-size: 6rem;
-  font-weight: 800;
-  color: var(--primary);
-  text-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  opacity: 0;
-  transform: scale(3);
+  position: relative; z-index: 10;
+  font-family: var(--font-heading); font-size: 6rem; font-weight: 800;
+  color: var(--primary); text-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+  letter-spacing: 6px; text-transform: uppercase;
+  opacity: 0; transform: scale(3);
   animation: textSlam 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s forwards;
 }
 
@@ -63,69 +39,107 @@
   100% { opacity: 1; transform: scale(1); }
 }
 
-/* Falling Products */
-.falling-products-container {
+/* -------------------------------------------
+   3D CSS Geometry and Shape Classes
+------------------------------------------- */
+
+.falling-product-container {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -500px; /* start way above */
+  z-index: 5;
+  /* Drop down animation */
+  animation: dropContainer 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes dropContainer {
+  0% { top: -500px; opacity: 0; }
+  10% { opacity: 1; }
+  100% { top: 35vh; opacity: 0.9; }
+}
+
+/* Shape Dimensions */
+.shape-shoebox { --w: 260px; --h: 120px; --d: 180px; }
+.shape-bag     { --w: 180px; --h: 260px; --d: 80px; }
+.shape-phone   { --w: 160px; --h: 300px; --d: 25px; }
+.shape-dial    { --w: 160px; --h: 160px; --d: 160px; } /* Perfect cube watch box */
+.shape-box     { --w: 200px; --h: 200px; --d: 200px; }
+
+/* The 3D Engine */
+.cube-wrapper {
+  width: var(--w);
+  height: var(--h);
+  position: relative;
+  transform-style: preserve-3d;
+  /* Tumbling spin animation */
+  animation: tumbleSpin 3s linear infinite;
+}
+
+@keyframes tumbleSpin {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(180deg); }
+}
+
+/* Give different tumble speeds and directions to siblings */
+.falling-product-container:nth-child(1) .cube-wrapper { animation-duration: 4s; animation-direction: reverse; }
+.falling-product-container:nth-child(2) .cube-wrapper { animation-duration: 3.5s; }
+.falling-product-container:nth-child(3) .cube-wrapper { animation-duration: 4.2s; animation-direction: reverse; }
+.falling-product-container:nth-child(4) .cube-wrapper { animation-duration: 2.8s; }
+.falling-product-container:nth-child(5) .cube-wrapper { animation-duration: 5s; animation-direction: reverse; }
+.falling-product-container:nth-child(6) .cube-wrapper { animation-duration: 3.2s; }
+
+/* Stagger vertical drops */
+.falling-product-container:nth-child(1) { animation-name: drop1; }
+.falling-product-container:nth-child(2) { animation-name: drop2; }
+.falling-product-container:nth-child(3) { animation-name: drop3; }
+.falling-product-container:nth-child(4) { animation-name: drop4; }
+.falling-product-container:nth-child(5) { animation-name: drop5; }
+.falling-product-container:nth-child(6) { animation-name: drop6; }
+
+@keyframes drop1 { to { top: 15vh; opacity: 0.9; } }
+@keyframes drop2 { to { top: 45vh; opacity: 0.7; } }
+@keyframes drop3 { to { top: 25vh; opacity: 0.9; } }
+@keyframes drop4 { to { top: 60vh; opacity: 0.6; } }
+@keyframes drop5 { to { top: 10vh; opacity: 0.8; } }
+@keyframes drop6 { to { top: 50vh; opacity: 0.9; } }
+
+/* Faces */
+.face {
+  position: absolute;
+  box-sizing: border-box;
+  background: var(--secondary); /* Dark luxury sides */
+  border: 1px solid var(--primary-hover);
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.8);
+}
+
+.face img {
   width: 100%;
   height: 100%;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.falling-product-img {
-  position: absolute;
-  width: 250px;
-  height: 250px;
   object-fit: cover;
-  border-radius: 8px;
-  border: 4px solid var(--border-color);
-  background: white;
-  
-  /* 3D layered shadow to fake thickness */
-  box-shadow: 
-    -2px 2px 0px rgba(255, 255, 255, 0.1),
-    -4px 4px 0px rgba(212, 175, 55, 0.4),
-    -10px 20px 40px rgba(0, 0, 0, 0.8);
-    
-  transform-style: preserve-3d;
-  
-  /* Initial state: above screen */
-  top: -300px;
-  opacity: 0;
-  
-  /* Animation */
-  animation: dropDown 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  display: block;
 }
 
-@keyframes dropDown {
-  0% {
-    top: -300px;
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    /* Random drop locations generally around the middle */
-    top: calc(20vh + (random() * 40vh)); /* CSS doesn't have random(), but we stagger the left positions in JS, so we just drop it to a fixed relative bottom */
-    top: 30vh; /* Fallback fixed drop zone */
-    opacity: 0.8;
-  }
+/* Mathematics of a CSS Cube using generic w/h/d variables */
+.face-front, .face-back {
+  width: var(--w);
+  height: var(--h);
+  left: 0; top: 0;
+}
+.face-right, .face-left {
+  width: var(--d);
+  height: var(--h);
+  left: calc(50% - (var(--d) / 2));
+  top: 0;
+}
+.face-top, .face-bottom {
+  width: var(--w);
+  height: var(--d);
+  left: 0;
+  top: calc(50% - (var(--d) / 2));
 }
 
-/* Since CSS lacks random, let's use nth-child to scatter them vertically as well */
-.falling-product-img:nth-child(1) { top: -300px; animation-name: drop1; }
-.falling-product-img:nth-child(2) { top: -300px; animation-name: drop2; }
-.falling-product-img:nth-child(3) { top: -300px; animation-name: drop3; }
-.falling-product-img:nth-child(4) { top: -300px; animation-name: drop4; }
-.falling-product-img:nth-child(5) { top: -300px; animation-name: drop5; }
-.falling-product-img:nth-child(6) { top: -300px; animation-name: drop6; }
-
-@keyframes drop1 { 0% { top: -300px; opacity: 0; } 20% { opacity: 1; } 100% { top: 15vh; opacity: 0.7; } }
-@keyframes drop2 { 0% { top: -300px; opacity: 0; } 20% { opacity: 1; } 100% { top: 45vh; opacity: 0.5; } }
-@keyframes drop3 { 0% { top: -300px; opacity: 0; } 20% { opacity: 1; } 100% { top: 25vh; opacity: 0.8; } }
-@keyframes drop4 { 0% { top: -300px; opacity: 0; } 20% { opacity: 1; } 100% { top: 60vh; opacity: 0.6; } }
-@keyframes drop5 { 0% { top: -300px; opacity: 0; } 20% { opacity: 1; } 100% { top: 10vh; opacity: 0.4; } }
-@keyframes drop6 { 0% { top: -300px; opacity: 0; } 20% { opacity: 1; } 100% { top: 50vh; opacity: 0.9; } }
+.face-front  { transform: translateZ(calc(var(--d) / 2)); background: white; }
+.face-back   { transform: rotateY(180deg) translateZ(calc(var(--d) / 2)); background: white; }
+.face-right  { transform: rotateY(90deg) translateZ(calc(var(--w) / 2)); }
+.face-left   { transform: rotateY(-90deg) translateZ(calc(var(--w) / 2)); }
+.face-top    { transform: rotateX(90deg) translateZ(calc(var(--h) / 2)); }
+.face-bottom { transform: rotateX(-90deg) translateZ(calc(var(--h) / 2)); }
