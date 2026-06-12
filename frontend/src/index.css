@@ -41,24 +41,24 @@
 }
 
 [data-theme='dark'] {
-  /* Color System Dark Mode - Midnight Obsidian */
-  --primary: #D4AF37;
-  --primary-hover: #C5A028;
-  --primary-light: rgba(212, 175, 55, 0.15);
-  --secondary: #FAFAFA;
+  /* Color System Dark Mode - Emerald Forest */
+  --primary: #50C878;
+  --primary-hover: #3DA962;
+  --primary-light: rgba(80, 200, 120, 0.15);
+  --secondary: #0F3D2E;
   
-  --bg-primary: #0F0F11;
-  --bg-secondary: #18181A;
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #0F3D2E;
   --bg-gradient: 
-    radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.08), transparent 50%),
-    radial-gradient(circle at 85% 30%, rgba(100, 50, 150, 0.05), transparent 50%),
-    radial-gradient(circle at 50% 80%, rgba(212, 175, 55, 0.05), transparent 50%);
-  --bg-glass: rgba(15, 15, 17, 0.65);
-  --border-glass: rgba(255, 255, 255, 0.08);
+    radial-gradient(circle at 15% 50%, rgba(15, 61, 46, 0.6), transparent 50%),
+    radial-gradient(circle at 85% 30%, rgba(80, 200, 120, 0.15), transparent 50%),
+    radial-gradient(circle at 50% 80%, rgba(15, 61, 46, 0.5), transparent 50%);
+  --bg-glass: rgba(10, 10, 10, 0.75);
+  --border-glass: rgba(80, 200, 120, 0.15);
   
-  --text-primary: hsl(210, 40%, 98%);
-  --text-secondary: hsl(215, 20%, 75%);
-  --text-light: hsl(218, 11%, 50%);
+  --text-primary: #EDEDED;
+  --text-secondary: hsl(215, 20%, 70%);
+  --text-light: hsl(215, 15%, 50%);
   
   --border-color: hsl(220, 30%, 15%);
   --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -231,7 +231,7 @@ button, .btn {
 .btn-primary:hover:not(:disabled) {
   background: transparent;
   color: var(--primary);
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 4px 15px rgba(80, 200, 120, 0.2);
 }
 
 .btn-primary:active {
