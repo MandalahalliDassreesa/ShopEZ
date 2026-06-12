@@ -263,13 +263,11 @@ const ProductDetail = () => {
 
           {/* Price Breakdown */}
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '24px' }}>
-            <span style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)' }}>
-              ${finalPrice.toFixed(2)}
+            <span style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)' }}>₹{finalPrice.toFixed(2)}
             </span>
             {product.discountPercentage > 0 && (
               <>
-                <span style={{ textDecoration: 'line-through', color: 'var(--text-light)', fontSize: '1.2rem' }}>
-                  ${currentPrice.toFixed(2)}
+                <span style={{ textDecoration: 'line-through', color: 'var(--text-light)', fontSize: '1.2rem' }}>₹{currentPrice.toFixed(2)}
                 </span>
                 <span className="badge-tag flash" style={{ fontSize: '0.85rem' }}>
                   {product.discountPercentage}% OFF
@@ -545,7 +543,7 @@ const ProductDetail = () => {
               <div>
                 <h4 style={{ fontSize: '0.9rem', marginBottom: '4px', display: '-webkit-box', WebkitLineClamp: 1, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{p.name}</h4>
                 <div style={{ display: 'flex', color: 'var(--accent)', fontSize: '0.8rem' }}>★ {p.rating}</div>
-                <strong style={{ fontSize: '0.95rem' }}>${p.price.toFixed(2)}</strong>
+                <strong style={{ fontSize: '0.95rem' }}>₹{p.price.toFixed(2)}</strong>
               </div>
             </Link>
           ))}
@@ -562,7 +560,7 @@ const ProductDetail = () => {
               <img src={p.images[0]} alt={p.name} style={{ width: '100%', height: '140px', objectFit: 'cover', borderRadius: '4px', marginBottom: '10px', background: '#f5f5f7' }} />
               <h4 style={{ fontSize: '0.95rem', marginBottom: '4px', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', height: '2.6rem' }}>{p.name}</h4>
               <div style={{ display: 'flex', color: 'var(--accent)', fontSize: '0.8rem', marginBottom: '8px' }}>★ {p.rating}</div>
-              <strong style={{ marginTop: 'auto' }}>${p.price.toFixed(2)}</strong>
+              <strong style={{ marginTop: 'auto' }}>₹{p.price.toFixed(2)}</strong>
             </Link>
           ))}
         </div>

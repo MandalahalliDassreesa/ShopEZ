@@ -321,7 +321,7 @@ const AdminDashboard = () => {
                     </div>
                     <div>
                       <span className="admin-stat-label">Total Revenue</span>
-                      <p className="admin-stat-val">${analytics.totalRevenue.toFixed(2)}</p>
+                      <p className="admin-stat-val">₹{analytics.totalRevenue.toFixed(2)}</p>
                     </div>
                   </div>
 
@@ -443,7 +443,7 @@ const AdminDashboard = () => {
                         <input type="text" className="form-input-val" required placeholder="e.g. Electronics" value={prodCategory} onChange={(e) => setProdCategory(e.target.value)} />
                       </div>
                       <div className="form-group-field">
-                        <label className="form-label-txt">Base Price ($) *</label>
+                        <label className="form-label-txt">Base Price (₹) *</label>
                         <input type="number" step="0.01" className="form-input-val" required value={prodPrice} onChange={(e) => setProdPrice(e.target.value)} />
                       </div>
                       <div className="form-group-field">
@@ -540,7 +540,7 @@ const AdminDashboard = () => {
                             </td>
                             <td>{p.brand}</td>
                             <td>{p.category}</td>
-                            <td><strong>${p.price.toFixed(2)}</strong></td>
+                            <td><strong>₹{p.price.toFixed(2)}</strong></td>
                             <td>
                               <span className={`admin-inventory-status ${statusClass}`}>{statusText} ({totalStock})</span>
                             </td>
@@ -596,7 +596,7 @@ const AdminDashboard = () => {
                           <td><strong>{order._id}</strong></td>
                           <td>{order.user?.email || 'Guest/Deleted'}</td>
                           <td>{new Date(order.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
-                          <td><strong>${order.totalPrice.toFixed(2)}</strong></td>
+                          <td><strong>₹{order.totalPrice.toFixed(2)}</strong></td>
                           <td>
                             <span
                               style={{
@@ -771,7 +771,7 @@ const AdminDashboard = () => {
                           <td><strong>{coupon.code}</strong></td>
                           <td>{coupon.discountType}</td>
                           <td>{coupon.discountType === 'percentage' ? `${coupon.discountValue}%` : `$${coupon.discountValue}`}</td>
-                          <td>${coupon.minPurchase}</td>
+                          <td>₹{coupon.minPurchase}</td>
                           <td>{new Date(coupon.expiryDate).toLocaleDateString('en-US')}</td>
                           <td>
                             <span

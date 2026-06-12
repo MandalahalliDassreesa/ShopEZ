@@ -201,7 +201,7 @@ const Checkout = () => {
             </div>
             <div>
               <span style={{ color: 'var(--text-light)', fontSize: '0.85rem' }}>Total Amount:</span>
-              <p style={{ fontWeight: 'bold', color: 'var(--primary)', fontSize: '1.2rem' }}>${orderSuccess.totalPrice.toFixed(2)}</p>
+              <p style={{ fontWeight: 'bold', color: 'var(--primary)', fontSize: '1.2rem' }}>₹{orderSuccess.totalPrice.toFixed(2)}</p>
             </div>
           </div>
 
@@ -546,7 +546,7 @@ const Checkout = () => {
                     </p>
                     <span style={{ color: 'var(--text-light)' }}>Qty: {item.qty}</span>
                   </div>
-                  <strong>${(item.price * item.qty).toFixed(2)}</strong>
+                  <strong>₹{(item.price * item.qty).toFixed(2)}</strong>
                 </div>
               ))}
             </div>
@@ -555,7 +555,7 @@ const Checkout = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.9rem', marginBottom: '16px', borderBottom: '1px solid var(--border-color)', paddingBottom: '16px' }}>
               <div style={{ display: 'flex', justifyContet: 'space-between', justifyContent: 'space-between' }}>
                 <span style={{ color: 'var(--text-secondary)' }}>Items Price</span>
-                <span>${itemsPrice.toFixed(2)}</span>
+                <span>₹{itemsPrice.toFixed(2)}</span>
               </div>
               {discountAmount > 0 && (
                 <div style={{ display: 'flex', justifyContet: 'space-between', justifyContent: 'space-between', color: 'hsl(142, 70%, 40%)' }}>
@@ -569,13 +569,13 @@ const Checkout = () => {
               </div>
               <div style={{ display: 'flex', justifyContet: 'space-between', justifyContent: 'space-between' }}>
                 <span style={{ color: 'var(--text-secondary)' }}>Estimated Tax</span>
-                <span>${taxPrice.toFixed(2)}</span>
+                <span>₹{taxPrice.toFixed(2)}</span>
               </div>
             </div>
 
             <div style={{ display: 'flex', justifyContet: 'space-between', justifyContent: 'space-between', marginBottom: '8px' }}>
               <strong>Grand Total</strong>
-              <strong style={{ color: 'var(--primary)', fontSize: '1.3rem' }}>${totalPrice.toFixed(2)}</strong>
+              <strong style={{ color: 'var(--primary)', fontSize: '1.3rem' }}>₹{totalPrice.toFixed(2)}</strong>
             </div>
           </div>
         </div>

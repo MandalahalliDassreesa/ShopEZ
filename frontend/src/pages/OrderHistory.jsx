@@ -111,7 +111,7 @@ const OrderHistory = () => {
                   </div>
                   <div>
                     <span style={{ fontSize: '0.8rem', color: 'var(--text-light)' }}>Total:</span>
-                    <p style={{ fontWeight: 'bold', fontSize: '0.95rem', color: 'var(--primary)' }}>${order.totalPrice.toFixed(2)}</p>
+                    <p style={{ fontWeight: 'bold', fontSize: '0.95rem', color: 'var(--primary)' }}>₹{order.totalPrice.toFixed(2)}</p>
                   </div>
                 </div>
 
@@ -135,7 +135,7 @@ const OrderHistory = () => {
                           )}
                         </div>
                         <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>Qty: {item.qty}</span>
-                        <strong>${(item.price * item.qty).toFixed(2)}</strong>
+                        <strong>₹{(item.price * item.qty).toFixed(2)}</strong>
                       </div>
                     );
                   })}

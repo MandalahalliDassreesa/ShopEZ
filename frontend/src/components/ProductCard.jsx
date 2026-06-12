@@ -104,12 +104,11 @@ const ProductCard = ({ product, compareList = [], onToggleCompare }) => {
           </div>
 
           <div className="product-card-price-row">
-            <span className="product-curr-price">
-              ${discountedPrice.toFixed(2)}
+            <span className="product-curr-price">₹{discountedPrice.toFixed(2)}
             </span>
             {product.discountPercentage > 0 && (
               <>
-                <span className="product-orig-price">${product.price}</span>
+                <span className="product-orig-price">₹{product.price}</span>
               </>
             )}
           </div>

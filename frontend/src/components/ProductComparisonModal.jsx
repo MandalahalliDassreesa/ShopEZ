@@ -30,7 +30,7 @@ const ProductComparisonModal = ({ products, onClose }) => {
                       <div className="compare-product-header">
                         <img src={p.images[0]} alt={p.name} className="compare-product-img" />
                         <span className="compare-product-name">{p.name}</span>
-                        <span style={{ fontSize: '1.1rem', fontWeight: 800 }}>${finalPrice.toFixed(2)}</span>
+                        <span style={{ fontSize: '1.1rem', fontWeight: 800 }}>₹{finalPrice.toFixed(2)}</span>
                       </div>
                     </th>
                   );

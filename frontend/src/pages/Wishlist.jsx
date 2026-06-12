@@ -80,9 +80,9 @@ const Wishlist = () => {
                   </h3>
 
                   <div className="product-card-price-row" style={{ marginTop: 'auto' }}>
-                    <span className="product-curr-price">${finalPrice.toFixed(2)}</span>
+                    <span className="product-curr-price">₹{finalPrice.toFixed(2)}</span>
                     {product.discountPercentage > 0 && (
-                      <span className="product-orig-price">${product.price}</span>
+                      <span className="product-orig-price">₹{product.price}</span>
                     )}
                   </div>
                 </div>

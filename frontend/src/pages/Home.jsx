@@ -427,7 +427,7 @@ const Home = () => {
 
           {/* Price Range Filters */}
           <div className="form-group-field">
-            <label className="form-label-txt">Price Range ($)</label>
+            <label className="form-label-txt">Price Range (₹)</label>
             <div style={{ display: 'flex', gap: '8px' }}>
               <input
                 type="number"

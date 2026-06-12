@@ -357,7 +357,7 @@ const UserDashboard = () => {
                         <h4 style={{ fontSize: '0.9rem', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', height: '2.5rem', marginBottom: '4px' }}>
                           {product.name}
                         </h4>
-                        <strong style={{ marginTop: 'auto' }}>${finalPrice.toFixed(2)}</strong>
+                        <strong style={{ marginTop: 'auto' }}>₹{finalPrice.toFixed(2)}</strong>
                       </Link>
                     );
                   })}

@@ -168,7 +168,7 @@ const Cart = () => {
                     </div>
 
                     <div className="cart-item-price-col">
-                      <span className="cart-item-price">${(item.price * item.qty).toFixed(2)}</span>
+                      <span className="cart-item-price">₹{(item.price * item.qty).toFixed(2)}</span>
                       {item.qty > 1 && (
                         <p style={{ fontSize: '0.8rem', color: 'var(--text-light)', marginTop: '2px' }}>
                           (${item.price.toFixed(2)} each)
@@ -213,7 +213,7 @@ const Cart = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px', borderBottom: '1px solid var(--border-color)', paddingBottom: '16px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <span style={{ color: 'var(--text-secondary)' }}>Subtotal</span>
-                  <span>${itemsPrice.toFixed(2)}</span>
+                  <span>₹{itemsPrice.toFixed(2)}</span>
                 </div>
                 {bogoDiscount > 0 && (
                   <div style={{ display: 'flex', justifyContent: 'space-between', color: 'hsl(142, 70%, 40%)' }}>
@@ -238,14 +238,14 @@ const Cart = () => {
                 )}
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <span style={{ color: 'var(--text-secondary)' }}>Estimated Tax (8%)</span>
-                  <span>${taxPrice.toFixed(2)}</span>
+                  <span>₹{taxPrice.toFixed(2)}</span>
                 </div>
               </div>
 
               {/* Grand Total */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '24px' }}>
                 <strong style={{ fontSize: '1.2rem' }}>Total Price</strong>
-                <strong style={{ fontSize: '1.6rem', color: 'var(--primary)' }}>${totalPrice.toFixed(2)}</strong>
+                <strong style={{ fontSize: '1.6rem', color: 'var(--primary)' }}>₹{totalPrice.toFixed(2)}</strong>
               </div>
 
               {/* Shipping Date Estimate */}
@@ -288,7 +288,7 @@ const Cart = () => {
                   <h4 style={{ fontSize: '0.95rem', display: '-webkit-box', WebkitLineClamp: 1, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
                     {item.name}
                   </h4>
-                  <strong style={{ display: 'block', margin: '4px 0', fontSize: '1rem' }}>${item.price.toFixed(2)}</strong>
+                  <strong style={{ display: 'block', margin: '4px 0', fontSize: '1rem' }}>₹{item.price.toFixed(2)}</strong>
                   <div style={{ display: 'flex', gap: '12px' }}>
                     <button
                       onClick={() => {

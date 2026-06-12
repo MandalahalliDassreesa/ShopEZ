@@ -8,6 +8,8 @@ import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
 import { ToastProvider } from './components/Toast';
+import { useAuth } from './context/AuthContext';
+import LocationSelectorModal from './components/LocationSelectorModal';
 
 // Component layout
 import Navbar from './components/Navbar';
@@ -24,6 +26,26 @@ import UserDashboard from './pages/UserDashboard';
 import { Login, Register } from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 
+const GlobalLocationModal = () => {
+  const { user } = useAuth();
+  const [showModal, React_useState] = React.useState(false);
+
+  React.useEffect(() => {
+    // Show modal if user logs in and hasn't picked a location yet
+    if (user && !localStorage.getItem('userLocation')) {
+      showModalState(true);
+    }
+  }, [user]);
+
+  const showModalState = (val) => React_useState(val);
+
+  const handleSelectLocation = (location) => {
+    localStorage.setItem('userLocation', location);
+  };
+
+  return <LocationSelectorModal isOpen={showModal} onClose={() => showModalState(false)} onSelectLocation={handleSelectLocation} />;
+};
+
 function App() {
   return (
     <Router>
@@ -33,6 +55,7 @@ function App() {
             <AuthProvider>
               <ToastProvider>
                 <div className="app-container">
+                  <GlobalLocationModal />
                   <Navbar />
                   <main>
                     <Routes>
