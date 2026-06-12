@@ -5,20 +5,15 @@
   width: 100vw;
   height: 100vh;
   z-index: 99999;
-  pointer-events: none;
+  pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   background-color: transparent;
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
-.category-overlay.active {
-  pointer-events: auto;
-  opacity: 1;
-}
+/* removed .active */
 
 /* Base overlay background */
 .overlay-bg {
