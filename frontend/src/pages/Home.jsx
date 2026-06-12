@@ -285,10 +285,12 @@ const Home = () => {
         <section style={{ marginBottom: '40px' }}>
           <h2 style={{ marginBottom: '16px', fontSize: '1.4rem' }}>Browse Categories</h2>
           <div
+            className="hide-scrollbar"
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
-              gap: '16px'
+              display: 'flex',
+              overflowX: 'auto',
+              gap: '16px',
+              paddingBottom: '8px'
             }}
           >
             {categories.map((cat, idx) => (
@@ -297,6 +299,8 @@ const Home = () => {
                 onClick={() => handleCategoryClick(cat)}
                 className="glass-card"
                 style={{
+                  flex: '0 0 auto',
+                  minWidth: '120px',
                   padding: '16px 8px',
                   textAlign: 'center',
                   cursor: 'pointer',
