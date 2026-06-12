@@ -45,10 +45,18 @@ const CategoryOverlay = () => {
                 <div className="face face-back">
                   <img src={product.images[0]} alt={product.name} />
                 </div>
-                <div className="face face-right"></div>
-                <div className="face face-left"></div>
-                <div className="face face-top"></div>
-                <div className="face face-bottom"></div>
+                <div className="face face-right">
+                  <img src={product.images[0]} alt={product.name} />
+                </div>
+                <div className="face face-left">
+                  <img src={product.images[0]} alt={product.name} />
+                </div>
+                <div className="face face-top">
+                  <img src={product.images[0]} alt={product.name} />
+                </div>
+                <div className="face face-bottom">
+                  <img src={product.images[0]} alt={product.name} />
+                </div>
               </div>
             </div>
           );
