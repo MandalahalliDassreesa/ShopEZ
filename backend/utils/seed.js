@@ -23,68 +23,81 @@ const categories = [
   'Accessories'
 ];
 
-// Unsplash stock image categories to make the app look stunning
-const categoryImages = {
-  Electronics: [
-    'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=60', // mobile
-    'https://images.unsplash.com/photo-1496181130204-755241524eab?w=600&auto=format&fit=crop&q=60', // laptop
-    'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&auto=format&fit=crop&q=60', // tablet
-    'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=60'  // headphones
-  ],
-  Fashion: [
-    'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop&q=60', // tshirt
-    'https://images.unsplash.com/photo-1543087903-1ac2ec7aa8c5?w=600&auto=format&fit=crop&q=60', // jacket
-    'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&auto=format&fit=crop&q=60', // jeans
-    'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?w=600&auto=format&fit=crop&q=60'  // dress
-  ],
-  Footwear: [
-    'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=60', // red shoe
-    'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600&auto=format&fit=crop&q=60', // sneaker
-    'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&auto=format&fit=crop&q=60', // white sneaker
-    'https://images.unsplash.com/photo-1539185441755-769473a23570?w=600&auto=format&fit=crop&q=60'  // boot
-  ],
-  Watches: [
-    'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=60', // watch
-    'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=600&auto=format&fit=crop&q=60', // vintage watch
-    'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=600&auto=format&fit=crop&q=60', // smartwatch
-    'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?w=600&auto=format&fit=crop&q=60'  // classic leather
-  ],
-  Books: [
-    'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=600&auto=format&fit=crop&q=60', // open book
-    'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=60', // books stacked
-    'https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=600&auto=format&fit=crop&q=60', // reading book
-    'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=60'  // library pile
-  ],
-  'Home Appliances': [
-    'https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=600&auto=format&fit=crop&q=60', // microwave/toaster
-    'https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=600&auto=format&fit=crop&q=60', // blender
-    'https://images.unsplash.com/photo-1558317374-067fb5f30001?w=600&auto=format&fit=crop&q=60', // vacuum
-    'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&auto=format&fit=crop&q=60'  // washing machine
-  ],
-  Sports: [
-    'https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=600&auto=format&fit=crop&q=60', // dumbbell
-    'https://images.unsplash.com/photo-1599447421416-3414500d18a5?w=600&auto=format&fit=crop&q=60', // kettlebell
-    'https://images.unsplash.com/photo-1592432678016-e910b452f9a2?w=600&auto=format&fit=crop&q=60', // yoga mat
-    'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&auto=format&fit=crop&q=60'  // generic running/sports
-  ],
-  Beauty: [
-    'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&auto=format&fit=crop&q=60', // skincare bottle
-    'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=60', // cosmetics makeup
-    'https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop&q=60', // face cream
-    'https://images.unsplash.com/photo-1515688594390-b649af70d282?w=600&auto=format&fit=crop&q=60'  // perfume bottle
-  ],
-  Grocery: [
-    'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop&q=60', // market veggies
-    'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&auto=format&fit=crop&q=60', // coffee bag
-    'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&auto=format&fit=crop&q=60', // olive oil
-    'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=60'  // pasta/rice grains
-  ],
-  Accessories: [
-    'https://images.unsplash.com/photo-1627124118303-624c89432f82?w=600&auto=format&fit=crop&q=60', // wallet
-    'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&auto=format&fit=crop&q=60', // belt
-    'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&auto=format&fit=crop&q=60', // sunglasses
-    'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=60'  // leather bag
-  ]
+const typeImages = {
+  // Electronics
+  'Smartphone': 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=60',
+  'Laptop Pro': 'https://images.unsplash.com/photo-1496181130204-755241524eab?w=600&auto=format&fit=crop&q=60',
+  'Tablet Air': 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&auto=format&fit=crop&q=60',
+  'Wireless Headphones': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=60',
+  'Smart Display': 'https://images.unsplash.com/photo-1584006682522-dc17d6c0d06c?w=600&auto=format&fit=crop&q=60',
+  'Powerbank': 'https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=600&auto=format&fit=crop&q=60',
+  'Router Max': 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&auto=format&fit=crop&q=60',
+  
+  // Fashion
+  'Cotton Crewneck': 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&auto=format&fit=crop&q=60',
+  'Waterproof Parka': 'https://images.unsplash.com/photo-1543087903-1ac2ec7aa8c5?w=600&auto=format&fit=crop&q=60',
+  'Slim Fit Denim': 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600&auto=format&fit=crop&q=60',
+  'Summer Dress': 'https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?w=600&auto=format&fit=crop&q=60',
+  'Chino Trousers': 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&auto=format&fit=crop&q=60',
+  'Knitted Sweater': 'https://images.unsplash.com/photo-1614975059251-992f11792b9f?w=600&auto=format&fit=crop&q=60',
+
+  // Footwear
+  'Running Sneakers': 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&auto=format&fit=crop&q=60',
+  'Leather Boots': 'https://images.unsplash.com/photo-1539185441755-769473a23570?w=600&auto=format&fit=crop&q=60',
+  'Cork Sandals': 'https://images.unsplash.com/photo-1603487742131-4160ec999306?w=600&auto=format&fit=crop&q=60',
+  'Casual Loafers': 'https://images.unsplash.com/photo-1550399504-8953e1a6ac87?w=600&auto=format&fit=crop&q=60',
+  'Trail Running Shoes': 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600&auto=format&fit=crop&q=60',
+  'Slip-on Slides': 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&auto=format&fit=crop&q=60',
+
+  // Watches
+  'Hybrid Smartwatch': 'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=600&auto=format&fit=crop&q=60',
+  'Classic Analog': 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=60',
+  'Sports Tracker': 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=600&auto=format&fit=crop&q=60',
+  'Titanium Automaton': 'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?w=600&auto=format&fit=crop&q=60',
+  'Minimalist Dial': 'https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=600&auto=format&fit=crop&q=60',
+  'Chronograph': 'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=600&auto=format&fit=crop&q=60',
+
+  // Books
+  'Mystery Thriller Novel': 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=600&auto=format&fit=crop&q=60',
+  'Cooking Recipe Guide': 'https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?w=600&auto=format&fit=crop&q=60',
+  'World History Digest': 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=60',
+  'Quantum Physics Intro': 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&auto=format&fit=crop&q=60',
+  'Startup Playbook': 'https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&auto=format&fit=crop&q=60',
+
+  // Home Appliances
+  'Personal Blender': 'https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?w=600&auto=format&fit=crop&q=60',
+  'Smart Microwave': 'https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=600&auto=format&fit=crop&q=60',
+  'Cordless Vacuum': 'https://images.unsplash.com/photo-1558317374-067fb5f30001?w=600&auto=format&fit=crop&q=60',
+  'Convection Airfryer': 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=600&auto=format&fit=crop&q=60',
+  'Juice Extractor': 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600&auto=format&fit=crop&q=60',
+
+  // Sports
+  'Adjustable Kettlebell': 'https://images.unsplash.com/photo-1599447421416-3414500d18a5?w=600&auto=format&fit=crop&q=60',
+  'Non-Slip Yoga Mat': 'https://images.unsplash.com/photo-1592432678016-e910b452f9a2?w=600&auto=format&fit=crop&q=60',
+  'Speed Jump Rope': 'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&auto=format&fit=crop&q=60',
+  'Ergonomic Dumbbell Set': 'https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=600&auto=format&fit=crop&q=60',
+  'Compression Sleeve': 'https://images.unsplash.com/photo-1580087433295-ab2600c1030e?w=600&auto=format&fit=crop&q=60',
+
+  // Beauty
+  'Hydrating Face Cleanser': 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&auto=format&fit=crop&q=60',
+  'Matte Lip Gloss Set': 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=60',
+  'Vitamin C Serum': 'https://images.unsplash.com/photo-1608248597481-496100c80836?w=600&auto=format&fit=crop&q=60',
+  'Organic Argan Hair Oil': 'https://images.unsplash.com/photo-1515688594390-b649af70d282?w=600&auto=format&fit=crop&q=60',
+  'Facial Moisturizer': 'https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600&auto=format&fit=crop&q=60',
+
+  // Grocery
+  'Specialty Coffee Beans': 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&auto=format&fit=crop&q=60',
+  'Organic Green Tea Bag': 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&auto=format&fit=crop&q=60',
+  'Cold Pressed Olive Oil': 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&auto=format&fit=crop&q=60',
+  'Gluten-Free Penne Pasta': 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=60',
+  'Rolled Oats': 'https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=600&auto=format&fit=crop&q=60',
+
+  // Accessories
+  'Minimalist Leather Wallet': 'https://images.unsplash.com/photo-1627124118303-624c89432f82?w=600&auto=format&fit=crop&q=60',
+  'Anti-UV Sunglasses': 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&auto=format&fit=crop&q=60',
+  'Full Grain Leather Belt': 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&auto=format&fit=crop&q=60',
+  'Canvas Travel Backpack': 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=60',
+  'Laptop Sleeve': 'https://images.unsplash.com/photo-1603539947678-cd3954ed515d?w=600&auto=format&fit=crop&q=60'
 };
 
 const brands = {
@@ -236,8 +249,6 @@ const seedData = async () => {
     const generatedProducts = [];
 
     for (const category of categories) {
-      console.log(`Generating items for category: ${category}...`);
-      const imgArray = categoryImages[category];
       const brandList = brands[category];
       const typeList = itemTypes[category];
 
@@ -256,8 +267,8 @@ const seedData = async () => {
         else if (category === 'Fashion') basePrice = 15 + (i * 3);
         else basePrice = 10 + (i * 2);
 
-        // Images rotation
-        const images = [imgArray[(i - 1) % imgArray.length]];
+        // Images rotation (match exactly to product type)
+        const images = [typeImages[type] || 'https://via.placeholder.com/600x600?text=No+Image'];
 
         // Discount percentage
         const discountPercentage = i % 3 === 0 ? 10 + (i % 4) * 5 : 0; // some products have discounts
