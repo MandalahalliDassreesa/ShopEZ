@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import ProductCard from '../components/ProductCard';
 import ProductComparisonModal from '../components/ProductComparisonModal';
+import { useTransition } from '../context/TransitionContext';
 import { useToast } from '../components/Toast';
 
 // Carousel promo banners
@@ -38,6 +39,8 @@ const testimonials = [
 const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchKeyword = searchParams.get('search') || '';
+  const { triggerTransition } = useTransition();
+
   const searchCategory = searchParams.get('category') || '';
   
   const { addToast } = useToast();
@@ -190,9 +193,7 @@ const Home = () => {
   };
 
   const handleCategoryClick = (category) => {
-    setSearchParams({ category });
-    setSelectedCategory(category);
-    setPage(1);
+    triggerTransition(category, `/?category=${encodeURIComponent(category)}`);
   };
 
   const clearFilters = () => {

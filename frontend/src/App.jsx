@@ -15,6 +15,8 @@ import LocationSelectorModal from './components/LocationSelectorModal';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import { TransitionProvider } from './context/TransitionContext';
+import CategoryOverlay from './components/CategoryOverlay';
 import { ProtectedRoute, AdminRoute } from './components/ProtectedRoute';
 
 // Pages
@@ -50,8 +52,10 @@ const GlobalLocationModal = () => {
 function App() {
   return (
     <Router>
-      <ScrollToTop />
-      <ThemeProvider>
+      <TransitionProvider>
+        <ScrollToTop />
+        <CategoryOverlay />
+        <ThemeProvider>
         <CartProvider>
           <WishlistProvider>
             <AuthProvider>
@@ -113,6 +117,7 @@ function App() {
           </WishlistProvider>
         </CartProvider>
       </ThemeProvider>
+      </TransitionProvider>
     </Router>
   );
 }

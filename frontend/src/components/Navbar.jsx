@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useTheme } from '../context/ThemeContext';
+import { useTransition } from '../context/TransitionContext';
 import axios from 'axios';
 
 const Navbar = () => {
@@ -12,6 +13,7 @@ const Navbar = () => {
   const { cartItems } = useCart();
   const { wishlistItems } = useWishlist();
   const { theme, toggleTheme } = useTheme();
+  const { triggerTransition } = useTransition();
   const navigate = useNavigate();
 
   const [scrolled, setScrolled] = useState(false);
@@ -129,26 +131,26 @@ const Navbar = () => {
             <div className="mega-menu-column">
               <h4>Electronics & Home</h4>
               <ul>
-                <li><Link to="/?category=Electronics">Electronics</Link></li>
-                <li><Link to="/?category=Home Appliances">Home Appliances</Link></li>
-                <li><Link to="/?category=Watches">Watches</Link></li>
+                <li><Link to="/?category=Electronics" onClick={(e) => { e.preventDefault(); triggerTransition('Electronics', '/?category=Electronics'); }}>Electronics</Link></li>
+                <li><Link to="/?category=Home Appliances" onClick={(e) => { e.preventDefault(); triggerTransition('Home Appliances', '/?category=Home Appliances'); }}>Home Appliances</Link></li>
+                <li><Link to="/?category=Watches" onClick={(e) => { e.preventDefault(); triggerTransition('Watches', '/?category=Watches'); }}>Watches</Link></li>
               </ul>
             </div>
             <div className="mega-menu-column">
               <h4>Lifestyle & Apparel</h4>
               <ul>
-                <li><Link to="/?category=Fashion">Fashion Wear</Link></li>
-                <li><Link to="/?category=Footwear">Footwear</Link></li>
-                <li><Link to="/?category=Accessories">Accessories</Link></li>
-                <li><Link to="/?category=Beauty">Beauty & Cosmetics</Link></li>
+                <li><Link to="/?category=Fashion" onClick={(e) => { e.preventDefault(); triggerTransition('Fashion', '/?category=Fashion'); }}>Fashion Wear</Link></li>
+                <li><Link to="/?category=Footwear" onClick={(e) => { e.preventDefault(); triggerTransition('Footwear', '/?category=Footwear'); }}>Footwear</Link></li>
+                <li><Link to="/?category=Accessories" onClick={(e) => { e.preventDefault(); triggerTransition('Accessories', '/?category=Accessories'); }}>Accessories</Link></li>
+                <li><Link to="/?category=Beauty" onClick={(e) => { e.preventDefault(); triggerTransition('Beauty', '/?category=Beauty'); }}>Beauty & Cosmetics</Link></li>
               </ul>
             </div>
             <div className="mega-menu-column">
               <h4>Leisure & Kitchen</h4>
               <ul>
-                <li><Link to="/?category=Books">Books</Link></li>
-                <li><Link to="/?category=Sports">Sports & Fitness</Link></li>
-                <li><Link to="/?category=Grocery">Grocery</Link></li>
+                <li><Link to="/?category=Books" onClick={(e) => { e.preventDefault(); triggerTransition('Books', '/?category=Books'); }}>Books</Link></li>
+                <li><Link to="/?category=Sports" onClick={(e) => { e.preventDefault(); triggerTransition('Sports', '/?category=Sports'); }}>Sports & Fitness</Link></li>
+                <li><Link to="/?category=Grocery" onClick={(e) => { e.preventDefault(); triggerTransition('Grocery', '/?category=Grocery'); }}>Grocery</Link></li>
               </ul>
             </div>
           </div>

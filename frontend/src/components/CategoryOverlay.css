@@ -1,0 +1,171 @@
+.category-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: transparent;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.category-overlay.active {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* Base overlay background */
+.overlay-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-primary);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  animation: sweepUp 2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes sweepUp {
+  0% { transform: scaleY(0); transform-origin: bottom; }
+  45% { transform: scaleY(1); transform-origin: bottom; }
+  55% { transform: scaleY(1); transform-origin: top; }
+  100% { transform: scaleY(0); transform-origin: top; }
+}
+
+/* Category Text */
+.overlay-content {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeInOut 2s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0%, 20% { opacity: 0; transform: translateY(20px); }
+  40%, 60% { opacity: 1; transform: translateY(0); }
+  80%, 100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* 
+  Specific Animations for Categories
+*/
+
+/* Electronics: Lightning flashes */
+.anim-electronics::before, .anim-electronics::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0;
+  z-index: 3;
+}
+.anim-electronics::before {
+  animation: lightning 2s ease forwards;
+}
+.anim-electronics::after {
+  animation: lightning 2s ease 0.3s forwards;
+}
+
+@keyframes lightning {
+  0% { opacity: 0; }
+  30% { opacity: 0; }
+  32% { opacity: 0.8; }
+  34% { opacity: 0; }
+  36% { opacity: 0.5; }
+  38% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Fashion: Sparkles / Camera flash */
+.anim-fashion::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vw;
+  transform: translate(-50%, -50%) scale(0);
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
+  z-index: 1;
+  animation: flashBulb 2s ease forwards;
+}
+
+@keyframes flashBulb {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  40% { transform: translate(-50%, -50%) scale(2); opacity: 1; }
+  60% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+
+/* Watches: Ticking sweep */
+.anim-watches::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200vw;
+  height: 2px;
+  background: var(--accent);
+  transform-origin: center left;
+  transform: translateY(-50%) rotate(-90deg);
+  z-index: 1;
+  animation: watchTick 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes watchTick {
+  0% { transform: translateY(-50%) rotate(-90deg); }
+  25% { transform: translateY(-50%) rotate(0deg); }
+  50% { transform: translateY(-50%) rotate(90deg); }
+  75% { transform: translateY(-50%) rotate(180deg); }
+  100% { transform: translateY(-50%) rotate(270deg); }
+}
+
+/* Footwear: Fast Dash Lines */
+.anim-footwear {
+  background: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.1) 40px, rgba(255,255,255,0.1) 80px);
+  background-size: 200% 100%;
+  animation: speedLines 2s linear forwards;
+}
+
+@keyframes speedLines {
+  0% { background-position: 100% 0; opacity: 0; }
+  30% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { background-position: -100% 0; opacity: 0; }
+}
+
+/* Generic luxury shine for all others */
+.anim-generic::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-25deg);
+  z-index: 3;
+  animation: luxuryShine 2s ease forwards;
+}
+
+@keyframes luxuryShine {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}

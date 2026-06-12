@@ -5,18 +5,18 @@
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
 
-  /* Color System Light Mode - Colorful & Vibrant */
-  --primary: #FF3366;
-  --primary-hover: #E62E5C;
-  --primary-light: #FFEBF0;
-  --secondary: #00C3FF;
-  --accent: #FFD500;
+  /* Color System Light Mode - Luxurious Minimalist */
+  --primary: #D4AF37; /* Matte Gold */
+  --primary-hover: #C5A028;
+  --primary-light: #F9F6ED;
+  --secondary: #0F0F11; /* Obsidian */
+  --accent: #D4AF37;
   
-  --bg-primary: #f4f7fa;
-  --bg-secondary: #ffffff;
-  --bg-gradient: linear-gradient(120deg, #ffd1ff 0%, #fae8ff 30%, #e0f2fe 70%, #cffafe 100%);
-  --bg-glass: rgba(255, 255, 255, 0.7);
-  --border-glass: rgba(255, 255, 255, 0.8);
+  --bg-primary: #FAFAFA; /* Pearl White */
+  --bg-secondary: #FFFFFF;
+  --bg-gradient: none;
+  --bg-glass: rgba(255, 255, 255, 0.95);
+  --border-glass: rgba(0, 0, 0, 0.05);
   
   --text-primary: hsl(224, 71%, 10%);
   --text-secondary: hsl(220, 9%, 40%);
@@ -38,19 +38,17 @@
 }
 
 [data-theme='dark'] {
-  /* Color System Dark Mode - Cosmic Neon */
-  --primary: #FF3366;
-  --primary-hover: #FF6688;
-  --primary-light: rgba(255, 51, 102, 0.15);
-  --secondary: #00C3FF;
+  /* Color System Dark Mode - Midnight Obsidian */
+  --primary: #D4AF37;
+  --primary-hover: #C5A028;
+  --primary-light: rgba(212, 175, 55, 0.15);
+  --secondary: #FAFAFA;
   
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #161622;
-  --bg-gradient: radial-gradient(circle at 10% 20%, rgba(255, 51, 102, 0.15) 0%, transparent 40%),
-                 radial-gradient(circle at 90% 80%, rgba(0, 195, 255, 0.15) 0%, transparent 40%),
-                 #0a0a0f;
-  --bg-glass: rgba(22, 22, 34, 0.6);
-  --border-glass: rgba(255, 255, 255, 0.1);
+  --bg-primary: #0F0F11;
+  --bg-secondary: #18181A;
+  --bg-gradient: none;
+  --bg-glass: rgba(15, 15, 17, 0.95);
+  --border-glass: rgba(255, 255, 255, 0.05);
   
   --text-primary: hsl(210, 40%, 98%);
   --text-secondary: hsl(215, 20%, 75%);
@@ -119,8 +117,8 @@ a {
 /* Glassmorphism Styles */
 .glass-panel {
   background: var(--bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-glass);
   box-shadow: var(--shadow-md);
 }
@@ -195,23 +193,17 @@ button, .btn {
 }
 
 .btn-primary {
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
-  background-size: 200% 200%;
-  animation: gradientFlow 3s ease infinite;
-  color: white;
-  border: none;
-  font-weight: 700;
-}
-
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  background: var(--primary);
+  color: #0F0F11;
+  border: 1px solid var(--primary);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .btn-primary:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 51, 102, 0.3);
+  background: transparent;
+  color: var(--primary);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
 }
 
 .btn-primary:active {
@@ -219,12 +211,14 @@ button, .btn {
 }
 
 .btn-secondary {
-  background: var(--bg-primary);
-  border: 1px solid var(--border-color);
+  background: transparent;
+  border: 1px solid var(--text-light);
   color: var(--text-primary);
+  font-weight: 600;
 }
 .btn-secondary:hover {
-  background: var(--border-color);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .btn-danger {
