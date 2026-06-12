@@ -1,0 +1,193 @@
+/* Footer Styling (Amazon-like theme) */
+.footer-container {
+  background-color: #232f3e;
+  color: #fff;
+  font-family: Arial, sans-serif; /* Amazon uses typical system fonts for the footer usually, but we can stick to our app's font */
+  font-family: var(--font-body);
+  margin-top: 40px;
+}
+
+.footer-back-to-top {
+  background-color: #37475a;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.footer-back-to-top:hover {
+  background-color: #485769;
+}
+
+.footer-main {
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #3a4553;
+}
+
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.footer-column h4 {
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: 10px;
+}
+
+.footer-column a {
+  color: #DDD;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+.footer-middle {
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-middle-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+}
+
+.footer-selectors {
+  display: flex;
+  gap: 8px;
+}
+
+.footer-selector-btn {
+  background: transparent;
+  border: 1px solid #848688;
+  color: #CCC;
+  padding: 8px 12px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.footer-bottom {
+  background-color: #131a22;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px 60px;
+  max-width: 900px;
+  margin-bottom: 30px;
+}
+
+.footer-bottom-item a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.footer-bottom-item strong {
+  color: #DDD;
+  font-size: 0.8rem;
+  margin-bottom: 2px;
+}
+
+.footer-bottom-item span {
+  color: #999;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+.footer-bottom-item a:hover strong,
+.footer-bottom-item a:hover span {
+  text-decoration: underline;
+}
+
+.footer-copyright {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-copyright-links {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-copyright-links a {
+  color: #DDD;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.footer-copyright-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-copyright p {
+  color: #DDD;
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .footer-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  .footer-bottom-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-links-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-middle-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .footer-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -13,6 +13,7 @@ import LocationSelectorModal from './components/LocationSelectorModal';
 
 // Component layout
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import { ProtectedRoute, AdminRoute } from './components/ProtectedRoute';
 
 // Pages
@@ -104,6 +105,7 @@ function App() {
                       />
                     </Routes>
                   </main>
+                  <Footer />
                 </div>
               </ToastProvider>
             </AuthProvider>
