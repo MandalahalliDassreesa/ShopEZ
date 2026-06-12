@@ -5,18 +5,18 @@
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
 
-  /* Color System Light Mode */
-  --primary: hsl(330, 82%, 56%); /* Pink */
-  --primary-hover: hsl(330, 82%, 48%);
-  --primary-light: hsl(330, 82%, 96%);
-  --secondary: hsl(190, 85%, 50%); /* Cyan */
-  --accent: hsl(45, 100%, 50%); /* Gold */
+  /* Color System Light Mode - Colorful & Vibrant */
+  --primary: #FF3366;
+  --primary-hover: #E62E5C;
+  --primary-light: #FFEBF0;
+  --secondary: #00C3FF;
+  --accent: #FFD500;
   
-  --bg-primary: hsl(0, 0%, 98%);
-  --bg-secondary: hsl(0, 0%, 100%);
-  --bg-gradient: linear-gradient(135deg, hsl(330, 100%, 96%), hsl(190, 100%, 96%), hsl(250, 100%, 96%));
-  --bg-glass: rgba(255, 255, 255, 0.85);
-  --border-glass: rgba(255, 255, 255, 0.6);
+  --bg-primary: #f4f7fa;
+  --bg-secondary: #ffffff;
+  --bg-gradient: linear-gradient(120deg, #ffd1ff 0%, #fae8ff 30%, #e0f2fe 70%, #cffafe 100%);
+  --bg-glass: rgba(255, 255, 255, 0.7);
+  --border-glass: rgba(255, 255, 255, 0.8);
   
   --text-primary: hsl(224, 71%, 10%);
   --text-secondary: hsl(220, 9%, 40%);
@@ -38,17 +38,19 @@
 }
 
 [data-theme='dark'] {
-  /* Color System Dark Mode */
-  --primary: hsl(330, 82%, 62%);
-  --primary-hover: hsl(330, 82%, 70%);
-  --primary-light: hsl(330, 30%, 15%);
-  --secondary: hsl(190, 85%, 55%);
+  /* Color System Dark Mode - Cosmic Neon */
+  --primary: #FF3366;
+  --primary-hover: #FF6688;
+  --primary-light: rgba(255, 51, 102, 0.15);
+  --secondary: #00C3FF;
   
-  --bg-primary: hsl(230, 30%, 10%);
-  --bg-secondary: hsl(230, 30%, 14%);
-  --bg-gradient: linear-gradient(135deg, hsl(330, 60%, 10%), hsl(190, 60%, 10%), hsl(250, 60%, 10%));
-  --bg-glass: rgba(20, 24, 38, 0.85);
-  --border-glass: rgba(255, 255, 255, 0.08);
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #161622;
+  --bg-gradient: radial-gradient(circle at 10% 20%, rgba(255, 51, 102, 0.15) 0%, transparent 40%),
+                 radial-gradient(circle at 90% 80%, rgba(0, 195, 255, 0.15) 0%, transparent 40%),
+                 #0a0a0f;
+  --bg-glass: rgba(22, 22, 34, 0.6);
+  --border-glass: rgba(255, 255, 255, 0.1);
   
   --text-primary: hsl(210, 40%, 98%);
   --text-secondary: hsl(215, 20%, 75%);
@@ -193,13 +195,25 @@ button, .btn {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  background-size: 200% 200%;
+  animation: gradientFlow 3s ease infinite;
   color: white;
+  border: none;
+  font-weight: 700;
 }
-.btn-primary:hover {
-  filter: brightness(1.1);
-  transform: scale(1.02);
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 51, 102, 0.3);
+}
+
 .btn-primary:active {
   transform: scale(0.98);
 }

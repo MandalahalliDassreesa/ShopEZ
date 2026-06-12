@@ -14,6 +14,7 @@ import LocationSelectorModal from './components/LocationSelectorModal';
 // Component layout
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import { ProtectedRoute, AdminRoute } from './components/ProtectedRoute';
 
 // Pages
@@ -49,6 +50,7 @@ const GlobalLocationModal = () => {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <ThemeProvider>
         <CartProvider>
           <WishlistProvider>
